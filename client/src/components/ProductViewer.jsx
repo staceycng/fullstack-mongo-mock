@@ -8,6 +8,7 @@ export default class ProductViewer extends React.Component {
 
     }
     this.handleBid = this.handleBid.bind(this);
+    this.delete = this.delete.bind(this);
   }
 
   handleBid(e){
@@ -20,6 +21,18 @@ export default class ProductViewer extends React.Component {
     product.curr_bid = newBid;
     // Call function to update product
     this.props.updateProduct(product);
+  }
+
+  delete(e){
+    axios.delete(`/name/${this.props.product._id}`)
+    .then(() => {
+      console.log('Deleted item!')
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+
+    this.props.getProducts();
   }
   
   render(){
@@ -39,6 +52,7 @@ export default class ProductViewer extends React.Component {
               <input type="text" name="bid"></input>
               <input type="submit" value="Submit!"></input>
             </form>
+            <button onClick={this.delete}>Delete Item</button>
           </div>
         </div>
       </div>
