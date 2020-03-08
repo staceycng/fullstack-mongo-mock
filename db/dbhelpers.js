@@ -13,9 +13,9 @@ var helpers = {
   // Accepts product as schema-formatted object
   updateProductHelper: ( product ) => {
     // Get _id of product
-    var id = product._id;
+    var _id = product._id;
     // Using the id as the filter, re-add the whole product
-    return Product.updateOne({ id }, product)
+    return Product.updateOne({ _id }, product)
   },
   // Accepts id of product to be deleted
   deleteProductHelper: ( _id ) => {
