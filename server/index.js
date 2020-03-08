@@ -3,25 +3,25 @@
   const express = require('express');
   const path = require('path');
   const router = require('./router');
+  const bodyParser = require('body-parser');
+  const cors = require('cors');
+  const port = 3000;
+  const controller = require('./controller.js');
 
   const server = express();
+  server.use(bodyParser.urlencoded({ extended: true }))
+  server.use(bodyParser.json())
+  server.use(cors());
   
   server.use('/', express.static(path.join(__dirname + '/../client/dist')));
-  
-  server.get('/name', (req, res) => {
-    res.status(200).send('This is your get request, modify this file to use your router!')
-  })
-  
-  server.post('/name', (req, res) => {
-    res.status(200).send('This is your post request, modify this file to use your router!')
-  })
-  
-  server.put('/name', (req, res) => {
-    res.status(200).send('This is your put request, modify this file to use your router!')
-  })
-  
-  server.delete('/name', (req, res) => {
-    res.status(200).send('This is your delete request, modify this file to use your router!')
-  })
+  server.use(router);
+
+  router.route('/name')
+    .get(controller.get)
+    .post(controller.post)
+    .put(controller.put)
+  router.route('/name/:_id')
+    .delete(controller.delete)
+
 
   server.listen(port, () => console.log('Connected to port: 3000'))

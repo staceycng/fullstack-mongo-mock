@@ -31,9 +31,22 @@ const createProducts = () => {
 }
 
 const insertMockData = function() {
-  // Complete me please
+  // Make array of new products
+  var productsArr = createProducts();
+
+  // Insert into database using 'insertMany'
+  Product.insertMany(productsArr, (err) => {
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log('Seed data inserted into database!');
+    }
+  })
 
 };
+
+insertMockData();
 
 // NOTE: DO NOT invoke this function as part of your
 // server code - it is meant to only be run once so that

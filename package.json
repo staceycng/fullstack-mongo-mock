@@ -5,7 +5,7 @@
   "main": "./server/index.js",
   "scripts": {
     "build": "webpack -w",
-    "start": "nodemon"
+    "start": "nodemon server/index.js"
   },
   "repository": "https://github.com/atk1213/fullstack-mongo-mock",
   "license": "MIT",
@@ -15,11 +15,11 @@
     "bootstrap": "^4.3.1",
     "cors": "^2.8.5",
     "express": "^4.16.4",
+    "mongoose": "^5.9.3",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.10",
     "react": "^16.8.4",
-    "react-dom": "^16.8.4",
-    "mongoose": "^4.9.6"
+    "react-dom": "^16.8.4"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
